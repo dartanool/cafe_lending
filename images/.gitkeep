@@ -1,0 +1,3 @@
+# Папка для локальных изображений
+# Положите сюда hero.jpg, about.jpg, gallery-*.jpg и т.д.
+# Затем обновите пути в index.html и style.css

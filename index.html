@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO -->
+  <title>Хайной Фуд — Уютное кафе с авторским кофе и домашней выпечкой</title>
+  <meta name="description" content="Ханой фуд— современное кафе с авторским кофе, свежей выпечкой и уютной атмосферой. Завтраки, бизнес-ланчи и десерты в центре города.">
+  <meta name="keywords" content="кафе, кофе, выпечка, завтрак, бизнес-ланч, десерты, Ханой фуд, ресторан">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ханой фуд — Уютное кафе с авторским кофе">
+  <meta property="og:description" content="Авторский кофе, свежая выпечка и атмосфера, в которую хочется возвращаться.">
+  <meta property="og:image" content="https://picsum.photos/seed/verdecafe/1200/630">
+  <meta property="og:url" content="https://verdecafe.example.com">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS — лёгкая библиотека анимаций при скролле -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <!-- Основные стили -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo" aria-label="Ханой фуд — на главную">
+        <img src="icons/logo.svg" alt="" class="header__logo-icon" width="32" height="32">
+        <span class="header__logo-text">Ханой фуд</span>
+      </a>
+
+      <nav class="header__nav" id="nav" aria-label="Основная навигация">
+        <ul class="header__menu">
+          <li><a href="#hero" class="header__link">Главная</a></li>
+          <li><a href="#about" class="header__link">О кафе</a></li>
+          <li><a href="#menu" class="header__link">Меню</a></li>
+          <li><a href="#promotions" class="header__link">Акции</a></li>
+          <li><a href="#gallery" class="header__link">Галерея</a></li>
+          <li><a href="#contacts" class="header__link">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <button class="header__burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero" aria-label="Главный экран">
+      <div class="hero__overlay"></div>
+      <div class="hero__content container" data-aos="fade-up">
+        <p class="hero__label">Добро пожаловать</p>
+        <h1 class="hero__title">Ханой фуд</h1>
+        <p class="hero__subtitle">
+          Место, где каждая чашка кофе — маленький ритуал, а каждый десерт — повод улыбнуться.
+          Уютная атмосфера, авторские рецепты и забота в каждой детали.
+        </p>
+        <div class="hero__actions">
+          <a href="#menu" class="btn btn--primary">Посмотреть меню</a>
+          <a href="#contacts" class="btn btn--outline">Связаться</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== О КАФЕ ==================== -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="container about__inner">
+        <div class="about__text" data-aos="fade-right">
+          <span class="section__label">О нас</span>
+          <h2 class="section__title" id="about-title">Кафе, созданное с душой</h2>
+          <p class="about__paragraph">
+            Ханой фуд — это пространство, где современный минимализм встречается с домашним теплом.
+            Мы открылись с простой идеей: создать место, куда приятно приходить утром за чашкой
+            свежесваренного кофе, встречаться с друзьями за десертом или работать в спокойной атмосфере.
+          </p>
+          <p class="about__paragraph">
+            Наши бариста обжаривают зёрна по собственным рецептурам, а кондитеры каждое утро
+            готовят выпечку из натуральных ингредиентов. Мы верим, что качество чувствуется
+            в каждой детали — от аромата свежемолотого кофе до текстуры круассана.
+          </p>
+          <p class="about__paragraph">
+            Приходите к нам — за вдохновением, разговором или просто за минутой тишины
+            посреди городской суеты.
+          </p>
+        </div>
+        <div class="about__image-wrapper" data-aos="fade-left">
+          <img
+            src="https://picsum.photos/seed/cafe-interior/800/1000"
+            alt="Уютный интерьер кафе Ханой фуд"
+            class="about__image"
+            width="800"
+            height="1000"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МЕНЮ ==================== -->
+    <section class="menu section section--alt" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section__header" data-aos="fade-up">
+          <span class="section__label">Меню</span>
+          <h2 class="section__title" id="menu-title">Наши блюда и напитки</h2>
+          <p class="section__desc">
+            Свежие ингредиенты, продуманные сочетания и любовь к каждому рецепту.
+          </p>
+        </div>
+
+        <div class="menu__grid">
+
+          <!-- Карточка: Кофе -->
+          <article class="menu-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="menu-card__icon" aria-hidden="true">☕</div>
+            <h3 class="menu-card__title">Кофе</h3>
+            <ul class="menu-card__list">
+              <li class="menu-card__item">
+                <span class="menu-card__name">Капучино</span>
+                <span class="menu-card__price">220 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Латте</span>
+                <span class="menu-card__price">240 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Эспрессо</span>
+                <span class="menu-card__price">180 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Раф</span>
+                <span class="menu-card__price">260 ₽</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Карточка: Выпечка -->
+          <article class="menu-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="menu-card__icon" aria-hidden="true">🥐</div>
+            <h3 class="menu-card__title">Выпечка</h3>
+            <ul class="menu-card__list">
+              <li class="menu-card__item">
+                <span class="menu-card__name">Круассан</span>
+                <span class="menu-card__price">190 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Чизкейк</span>
+                <span class="menu-card__price">320 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Торт «Шоколад»</span>
+                <span class="menu-card__price">350 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Круффин</span>
+                <span class="menu-card__price">210 ₽</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Карточка: Основное меню -->
+          <article class="menu-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="menu-card__icon" aria-hidden="true">🥗</div>
+            <h3 class="menu-card__title">Основное меню</h3>
+            <ul class="menu-card__list">
+              <li class="menu-card__item">
+                <span class="menu-card__name">Салат «Цезарь»</span>
+                <span class="menu-card__price">420 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Паста карбонара</span>
+                <span class="menu-card__price">480 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Тыквенный крем-суп</span>
+                <span class="menu-card__price">350 ₽</span>
+              </li>
+              <li class="menu-card__item">
+                <span class="menu-card__name">Боул с лососем</span>
+                <span class="menu-card__price">520 ₽</span>
+              </li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== АКЦИИ ==================== -->
+    <section class="promotions section" id="promotions" aria-labelledby="promotions-title">
+      <div class="container">
+        <div class="section__header" data-aos="fade-up">
+          <span class="section__label">Акции</span>
+          <h2 class="section__title" id="promotions-title">Специальные предложения</h2>
+          <p class="section__desc">
+            Приятные бонусы для наших гостей — каждый день.
+          </p>
+        </div>
+
+        <div class="promotions__grid">
+
+          <article class="promo-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="promo-card__icon">
+              <img src="icons/coffee.svg" alt="" width="48" height="48">
+            </div>
+            <h3 class="promo-card__title">Скидка 20% на кофе утром</h3>
+            <p class="promo-card__text">
+              С 8:00 до 11:00 любой кофейный напиток со скидкой 20%.
+              Идеальный старт дня с Ханой фуд.
+            </p>
+            <span class="promo-card__badge">до 11:00</span>
+          </article>
+
+          <article class="promo-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="promo-card__icon">
+              <img src="icons/pastry.svg" alt="" width="48" height="48">
+            </div>
+            <h3 class="promo-card__title">Десерт в подарок</h3>
+            <p class="promo-card__text">
+              При заказе двух основных блюд — десерт на выбор в подарок.
+              Побалуйте себя сладким завершением трапезы.
+            </p>
+            <span class="promo-card__badge">ежедневно</span>
+          </article>
+
+          <article class="promo-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="promo-card__icon">
+              <img src="icons/lunch.svg" alt="" width="48" height="48">
+            </div>
+            <h3 class="promo-card__title">Бизнес-ланч</h3>
+            <p class="promo-card__text">
+              Суп, салат и горячее блюдо — всего за 590 ₽.
+              Быстро, сытно и с заботой о вашем времени.
+            </p>
+            <span class="promo-card__badge">12:00 – 15:00</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ГАЛЕРЕЯ ==================== -->
+    <section class="gallery section section--alt" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section__header" data-aos="fade-up">
+          <span class="section__label">Галерея</span>
+          <h2 class="section__title" id="gallery-title">Атмосфера Ханой фуд</h2>
+          <p class="section__desc">
+            Интерьер, кофе, десерты и моменты, которые мы любим.
+          </p>
+        </div>
+
+        <div class="gallery__grid">
+          <figure class="gallery__item" data-aos="fade-up" data-aos-delay="0">
+            <img src="https://picsum.photos/seed/gallery-coffee/600/600" alt="Чашка свежего кофе" width="600" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery__item" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://picsum.photos/seed/gallery-pastry/600/600" alt="Свежая выпечка на витрине" width="600" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery__item" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://picsum.photos/seed/gallery-interior/600/600" alt="Интерьер кафе" width="600" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery__item" data-aos="fade-up" data-aos-delay="0">
+            <img src="https://picsum.photos/seed/gallery-dessert/600/600" alt="Авторский десерт" width="600" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery__item" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://picsum.photos/seed/gallery-food/600/600" alt="Блюдо из основного меню" width="600" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery__item" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://picsum.photos/seed/gallery-barista/600/600" alt="Бариста за работой" width="600" height="600" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== КОНТАКТЫ ==================== -->
+    <section class="contacts section" id="contacts" aria-labelledby="contacts-title">
+      <div class="container">
+        <div class="section__header" data-aos="fade-up">
+          <span class="section__label">Контакты</span>
+          <h2 class="section__title" id="contacts-title">Ждём вас в гости</h2>
+          <p class="section__desc">
+            Приходите лично или свяжитесь с нами удобным способом.
+          </p>
+        </div>
+
+        <div class="contacts__inner">
+          <div class="contacts__info" data-aos="fade-right">
+            <ul class="contacts__list">
+              <li class="contacts__item">
+                <span class="contacts__label">Адрес</span>
+                <address class="contacts__value">г. Москва, ул. Зелёная, 12</address>
+              </li>
+              <li class="contacts__item">
+                <span class="contacts__label">Телефон</span>
+                <a href="tel:+74951234567" class="contacts__value contacts__link">+7 (495) 123-45-67</a>
+              </li>
+              <li class="contacts__item">
+                <span class="contacts__label">Email</span>
+                <a href="mailto:hello@verdecafe.ru" class="contacts__value contacts__link">hello@verdecafe.ru</a>
+              </li>
+              <li class="contacts__item">
+                <span class="contacts__label">Часы работы</span>
+                <span class="contacts__value">Пн–Пт: 8:00 – 22:00<br>Сб–Вс: 9:00 – 23:00</span>
+              </li>
+            </ul>
+
+            <div class="contacts__actions">
+              <a href="tel:+74951234567" class="btn btn--primary">Позвонить</a>
+              <a href="mailto:hello@verdecafe.ru" class="btn btn--outline">Написать</a>
+            </div>
+          </div>
+
+          <div class="contacts__map" data-aos="fade-left">
+            <div class="contacts__map-placeholder" role="img" aria-label="Заглушка карты">
+              <img src="icons/map-pin.svg" alt="" width="48" height="48">
+              <p>Здесь будет карта</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo">
+          <img src="icons/logo.svg" alt="" width="28" height="28">
+          <span>Ханой фуд</span>
+        </a>
+        <p class="footer__desc">
+          Уютное кафе с авторским кофе, свежей выпечкой и атмосферой,
+          в которую хочется возвращаться снова и снова.
+        </p>
+      </div>
+
+      <div class="footer__social">
+        <span class="footer__social-label">Мы в соцсетях</span>
+        <ul class="footer__social-list">
+          <li>
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <img src="icons/instagram.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__social-link" aria-label="Telegram">
+              <img src="icons/telegram.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__social-link" aria-label="VK">
+              <img src="icons/vk.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p class="footer__copyright">&copy; 2026 Ханой фуд. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Основной скрипт -->
+  <script src="script.js"></script>
+</body>
+</html>
