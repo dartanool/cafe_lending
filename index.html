@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -35,272 +34,209 @@
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
-<header class="header" id="header">
-  <div class="container header__inner">
-    <a href="#hero" class="header__logo" aria-label="Ханой фуд — на главную">
-      <img src="icons/logo.svg" alt="" class="header__logo-icon" width="32" height="32">
-      <span class="header__logo-text">Ханой фуд</span>
-    </a>
-
-    <nav class="header__nav" id="nav" aria-label="Основная навигация">
-      <ul class="header__menu">
-        <li><a href="#hero" class="header__link">Главная</a></li>
-        <li><a href="#about" class="header__link">О нас</a></li>
-        <li><a href="#locations" class="header__link">Рестораны</a></li>
-        <li><a href="#promotions" class="header__link">Акции</a></li>
-        <li><a href="#gallery" class="header__link">Галерея</a></li>
-      </ul>
-    </nav>
-
-    <button class="header__burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
-      <span class="header__burger-line"></span>
-      <span class="header__burger-line"></span>
-      <span class="header__burger-line"></span>
-    </button>
-  </div>
-</header>
-
-<main>
-
-  <!-- ==================== HERO ==================== -->
-  <section class="hero" id="hero" aria-label="Главный экран">
-    <div class="hero__overlay"></div>
-
-    <div class="hero__inner container">
-      <!-- Слева: приветствие -->
-      <div class="hero__content" data-aos="fade-up">
-        <p class="hero__label">Вьетнамская кухня</p>
-        <h1 class="hero__title">Ханой фуд</h1>
-        <p class="hero__subtitle">
-          Бульоны, которые варятся с ночи, свежая зелень и вьетнамский кофе со сгущёнкой.
-          Готовим так, как едят в Ханое, — просто, горячо и по-семейному.
-        </p>
-        </p>
-        <a href="#about" class="btn btn--outline">Узнать о нас</a>
-      </div>
-
-      <!-- Справа: кнопки ресторанов (генерируются из locations.js) -->
-      <div class="hero__locations" data-aos="fade-up" data-aos-delay="150">
-        <p class="hero__locations-title">Выберите ресторан</p>
-        <ul class="hero__locations-list" id="hero-locations"></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== О НАС ==================== -->
-  <section class="about section" id="about" aria-labelledby="about-title">
-    <div class="container about__inner">
-      <div class="about__text" data-aos="fade-right">
-        <span class="section__label">О нас</span>
-        <h2 class="section__title" id="about-title">Вьетнам на вашей тарелке</h2>
-        <p class="about__paragraph">
-          Ханой фуд — это сеть ресторанов, где вьетнамскую кухню готовят так, как её готовят дома:
-          без упрощений и «адаптаций». Бульон для фо томится на кости много часов,
-          зелень приезжает свежей, а соусы мы делаем сами.
-        </p>
-        <p class="about__paragraph">
-          В каждом ресторане своя атмосфера и своё меню, но одно общее правило:
-          гость должен уйти сытым, довольным и с желанием вернуться.
-        </p>
-        <p class="about__paragraph">
-          Выберите ближайшую точку — покажем меню, адрес и как добраться.
-        </p>
-        <a href="#locations" class="btn btn--primary about__cta">Выбрать ресторан</a>
-      </div>
-      <div class="about__image-wrapper" data-aos="fade-left">
-        <img
-                src="https://picsum.photos/seed/cafe-interior/800/1000"
-                alt="Интерьер ресторана Ханой фуд"
-                class="about__image"
-                width="800"
-                height="1000"
-                loading="lazy"
-        >
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== РЕСТОРАНЫ ==================== -->
-  <!-- Вкладки и панели строятся скриптом из locations.js -->
-  <section class="locations section section--alt" id="locations" aria-labelledby="locations-title">
-    <div class="container">
-      <div class="section__header" data-aos="fade-up">
-        <span class="section__label">Рестораны</span>
-        <h2 class="section__title" id="locations-title">Меню, адреса и контакты</h2>
-        <p class="section__desc">
-          У каждого ресторана своё меню и график работы. Выберите нужный.
-        </p>
-      </div>
-
-      <div class="loc-tabs" id="loc-tabs" role="tablist" aria-label="Выбор ресторана"></div>
-      <div class="loc-panels" id="loc-panels"></div>
-    </div>
-  </section>
-
-  <!-- ==================== АКЦИИ ==================== -->
-  <section class="promotions section" id="promotions" aria-labelledby="promotions-title">
-    <div class="container">
-      <div class="section__header" data-aos="fade-up">
-        <span class="section__label">Акции</span>
-        <h2 class="section__title" id="promotions-title">Специальные предложения</h2>
-        <p class="section__desc">
-          Приятные бонусы для наших гостей — каждый день.
-        </p>
-      </div>
-
-      <div class="promotions__grid">
-
-        <article class="promo-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="promo-card__icon">
-            <img src="icons/coffee.svg" alt="" width="48" height="48">
-          </div>
-          <h3 class="promo-card__title">Скидка 20% на кофе утром</h3>
-          <p class="promo-card__text">
-            С 8:00 до 11:00 любой кофейный напиток со скидкой 20%.
-            Идеальный старт дня с Ханой фуд.
-          </p>
-          <span class="promo-card__badge">до 11:00</span>
-        </article>
-
-        <article class="promo-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="promo-card__icon">
-            <img src="icons/pastry.svg" alt="" width="48" height="48">
-          </div>
-          <h3 class="promo-card__title">Десерт в подарок</h3>
-          <p class="promo-card__text">
-            При заказе двух основных блюд — десерт на выбор в подарок.
-            Побалуйте себя сладким завершением трапезы.
-          </p>
-          <span class="promo-card__badge">ежедневно</span>
-        </article>
-
-        <article class="promo-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="promo-card__icon">
-            <img src="icons/lunch.svg" alt="" width="48" height="48">
-          </div>
-          <h3 class="promo-card__title">Бизнес-ланч</h3>
-          <p class="promo-card__text">
-            Суп, салат и горячее блюдо — всего за 590 ₽.
-            Быстро, сытно и с заботой о вашем времени.
-          </p>
-          <span class="promo-card__badge">12:00 – 15:00</span>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== ГАЛЕРЕЯ ==================== -->
-  <section class="gallery section section--alt" id="gallery" aria-labelledby="gallery-title">
-    <div class="container">
-      <div class="section__header" data-aos="fade-up">
-        <span class="section__label">Галерея</span>
-        <h2 class="section__title" id="gallery-title">Атмосфера Ханой фуд</h2>
-        <p class="section__desc">
-          Интерьер, блюда и моменты, которые мы любим.
-        </p>
-      </div>
-
-      <div class="gallery__grid">
-        <figure class="gallery__item" data-aos="fade-up" data-aos-delay="0">
-          <img src="https://picsum.photos/seed/gallery-coffee/600/600" alt="Чашка вьетнамского кофе" width="600" height="600" loading="lazy">
-        </figure>
-        <figure class="gallery__item" data-aos="fade-up" data-aos-delay="100">
-          <img src="https://picsum.photos/seed/gallery-pastry/600/600" alt="Свежая выпечка на витрине" width="600" height="600" loading="lazy">
-        </figure>
-        <figure class="gallery__item" data-aos="fade-up" data-aos-delay="200">
-          <img src="https://picsum.photos/seed/gallery-interior/600/600" alt="Интерьер ресторана" width="600" height="600" loading="lazy">
-        </figure>
-        <figure class="gallery__item" data-aos="fade-up" data-aos-delay="0">
-          <img src="https://picsum.photos/seed/gallery-dessert/600/600" alt="Авторский десерт" width="600" height="600" loading="lazy">
-        </figure>
-        <figure class="gallery__item" data-aos="fade-up" data-aos-delay="100">
-          <img src="https://picsum.photos/seed/gallery-food/600/600" alt="Тарелка фо бо" width="600" height="600" loading="lazy">
-        </figure>
-        <figure class="gallery__item" data-aos="fade-up" data-aos-delay="200">
-          <img src="https://picsum.photos/seed/gallery-barista/600/600" alt="Повар за работой" width="600" height="600" loading="lazy">
-        </figure>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ==================== FOOTER ==================== -->
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <a href="#hero" class="footer__logo">
-        <img src="icons/logo.svg" alt="" width="28" height="28">
-        <span>Ханой фуд</span>
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo" aria-label="Ханой фуд — на главную">
+        <img src="icons/logo.svg" alt="" class="header__logo-icon" width="32" height="32">
+        <span class="header__logo-text">Ханой фуд</span>
       </a>
-      <p class="footer__desc">
-        Сеть вьетнамских ресторанов: бульоны, лапша, кофе и десерты,
-        которые хочется повторить.
-      </p>
-    </div>
 
-    <div class="footer__social">
-      <span class="footer__social-label">Мы в соцсетях</span>
-      <ul class="footer__social-list">
-        <li>
-          <a href="#" class="footer__social-link" aria-label="Instagram">
-            <img src="icons/instagram.svg" alt="" width="24" height="24">
-          </a>
-        </li>
-        <li>
-          <a href="#" class="footer__social-link" aria-label="Telegram">
-            <img src="icons/telegram.svg" alt="" width="24" height="24">
-          </a>
-        </li>
-        <li>
-          <a href="#" class="footer__social-link" aria-label="VK">
-            <img src="icons/vk.svg" alt="" width="24" height="24">
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+      <nav class="header__nav" id="nav" aria-label="Основная навигация">
+        <ul class="header__menu">
+          <li><a href="#hero" class="header__link">Главная</a></li>
+          <li><a href="#about" class="header__link">О нас</a></li>
+          <li><a href="#menu" class="header__link">Меню</a></li>
+          <li><a href="#locations" class="header__link">Рестораны</a></li>
+        </ul>
+      </nav>
 
-  <div class="footer__bottom">
-    <div class="container">
-      <p class="footer__copyright">&copy; 2026 Ханой фуд. Все права защищены.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- ==================== LIGHTBOX (просмотр страниц меню) ==================== -->
-<dialog class="lightbox" id="lightbox" aria-label="Просмотр страницы меню">
-  <div class="lightbox__bar">
-    <span class="lightbox__counter" id="lb-counter"></span>
-    <div class="lightbox__tools">
-      <a class="lightbox__pdf" id="lb-pdf" href="#" target="_blank" rel="noopener" hidden>Открыть PDF</a>
-      <button class="lightbox__close" id="lb-close" type="button" aria-label="Закрыть">
-        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      <button class="header__burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
       </button>
     </div>
-  </div>
+  </header>
 
-  <div class="lightbox__stage" id="lb-stage">
-    <img class="lightbox__img" id="lb-img" alt="" draggable="false">
-  </div>
+  <main>
 
-  <button class="lightbox__nav lightbox__nav--prev" id="lb-prev" type="button" aria-label="Предыдущая страница">
-    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-  </button>
-  <button class="lightbox__nav lightbox__nav--next" id="lb-next" type="button" aria-label="Следующая страница">
-    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-  </button>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero" aria-label="Главный экран">
+      <div class="hero__overlay"></div>
 
-  <p class="lightbox__hint">Нажмите на страницу, чтобы приблизить</p>
-</dialog>
+      <div class="hero__inner container">
+        <!-- Слева: приветствие -->
+        <div class="hero__content" data-aos="fade-up">
+          <h1 class="hero__title">Добро пожаловать в «Ханой Фуд» — ваш уютный уголок настоящей вьетнамской кухни!</h1>
+          <p class="hero__subtitle">
+            Мы рады пригласить вас в гастрономическое путешествие по улицам Ханоя.
+            В нашем ресторане мы сохраняем традиционные рецепты, богатство ароматов и свежесть
+            ингредиентов, которыми так знаменита культура Вьетнама.
+          </p>
+          <a href="#about" class="btn btn--outline">Узнать о нас</a>
+        </div>
 
-<!-- AOS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<!-- Данные ресторанов (подключается ДО script.js) -->
-<script src="locations.js"></script>
-<!-- Основной скрипт -->
-<script src="script.js"></script>
+        <!-- Справа: кнопки ресторанов (генерируются из locations.js) -->
+        <div class="hero__locations" data-aos="fade-up" data-aos-delay="150">
+          <p class="hero__locations-title">Выберите ресторан</p>
+          <ul class="hero__locations-list" id="hero-locations"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== О НАС ==================== -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="container about__inner">
+        <div class="about__text" data-aos="fade-right">
+          <span class="section__label">О нас</span>
+          <h2 class="section__title" id="about-title">Что вас ждет у нас</h2>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <h3 class="feature-item__title">Аутентичный Фо Бо</h3>
+              <p>Насыщенный говяжий бульон, который варится по классической технологии
+                в течение многих часов с добавлением пряных специй и свежей зелени.</p>
+            </div>
+
+            <div class="feature-item">
+              <h3 class="feature-item__title">Свежесть и баланс</h3>
+              <p>Хрустящие нэмы, ароматный бун ча, традиционные сэндвичи банми
+                и разнообразие блюд с морепродуктами.</p>
+            </div>
+
+            <div class="feature-item">
+              <h3 class="feature-item__title">Атмосфера гостеприимства</h3>
+              <p>Мы создаем теплую и радушную обстановку, чтобы каждый визит
+                становился для вас приятным отдыхом.</p>
+            </div>
+          </div>
+
+          <p class="about__paragraph">
+            Загляните к нам на сытный обед, душевный ужин с друзьями или закажите
+            любимые блюда с доставкой прямо к вам домой!
+          </p>
+
+          <a href="#locations" class="btn btn--primary about__cta">Выбрать ресторан</a>
+        </div>
+        <div class="about__image-wrapper" data-aos="fade-left">
+          <img
+            src="https://picsum.photos/seed/cafe-interior/800/1000"
+            alt="Интерьер ресторана Ханой фуд"
+            class="about__image"
+            width="800"
+            height="1000"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== МЕНЮ ==================== -->
+    <!-- Одно меню для всех точек сети. Страницы задаются в конце файла locations.js (window.HANOI_MENU) -->
+    <section class="menu section section--alt" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section__header" data-aos="fade-up">
+          <span class="section__label">Меню</span>
+          <h2 class="section__title" id="menu-title">Меню Ханой фуд</h2>
+        </div>
+
+        <div class="menu-standalone" id="menu-standalone"></div>
+      </div>
+    </section>
+
+    <!-- ==================== РЕСТОРАНЫ ==================== -->
+    <!-- Вкладки и панели строятся скриптом из locations.js -->
+    <section class="locations section" id="locations" aria-labelledby="locations-title">
+      <div class="container">
+        <div class="section__header" data-aos="fade-up">
+          <span class="section__label">Рестораны</span>
+          <h2 class="section__title" id="locations-title">Наши рестораны</h2>
+        </div>
+
+        <div class="loc-tabs" id="loc-tabs" role="tablist" aria-label="Выбор ресторана"></div>
+        <div class="loc-panels" id="loc-panels"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo">
+          <img src="icons/logo.svg" alt="" width="28" height="28">
+          <span>Ханой фуд</span>
+        </a>
+        <p class="footer__desc">
+          Сеть вьетнамских ресторанов: бульоны, лапша, кофе и десерты,
+          которые хочется повторить.
+        </p>
+        <p class="footer__desc">
+          Откройте для себя истинный вкус Вьетнама вместе с «Ханой Фуд»!
+        </p>
+      </div>
+
+      <div class="footer__social">
+        <span class="footer__social-label">Мы в соцсетях</span>
+        <ul class="footer__social-list">
+          <li>
+            <a href="https://www.instagram.com/hanoi_food.msk?stkn=aTMxNmowMmNmb3Ez" class="footer__social-link" aria-label="Instagram">
+              <img src="icons/instagram.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+          <li>
+            <a href="https://t.me/hanoi_foodmsk" class="footer__social-link" aria-label="Telegram">
+              <img src="icons/telegram.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__social-link" aria-label="VK">
+              <img src="icons/vk.svg" alt="" width="24" height="24">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p class="footer__copyright">&copy; 2026 Ханой фуд. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== LIGHTBOX (просмотр страниц меню) ==================== -->
+  <dialog class="lightbox" id="lightbox" aria-label="Просмотр страницы меню">
+    <div class="lightbox__bar">
+      <span class="lightbox__counter" id="lb-counter"></span>
+      <div class="lightbox__tools">
+        <button class="lightbox__close" id="lb-close" type="button" aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="lightbox__stage" id="lb-stage">
+      <img class="lightbox__img" id="lb-img" alt="" draggable="false">
+    </div>
+
+    <button class="lightbox__nav lightbox__nav--prev" id="lb-prev" type="button" aria-label="Предыдущая страница">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" id="lb-next" type="button" aria-label="Следующая страница">
+      <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </button>
+
+    <p class="lightbox__hint">Нажмите на страницу, чтобы приблизить</p>
+  </dialog>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Данные ресторанов (подключается ДО script.js) -->
+  <script src="locations.js"></script>
+  <!-- Основной скрипт -->
+  <script src="script.js"></script>
 </body>
 </html>
