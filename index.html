@@ -46,6 +46,7 @@
         <ul class="header__menu">
           <li><a href="#hero" class="header__link">Главная</a></li>
           <li><a href="#about" class="header__link">О нас</a></li>
+          <li><a href="#promotions" class="header__link">Акции</a></li>
           <li><a href="#menu" class="header__link">Меню</a></li>
           <li><a href="#locations" class="header__link">Рестораны</a></li>
         </ul>
@@ -137,9 +138,60 @@
       </div>
     </section>
 
+    <!-- ==================== АКЦИИ ==================== -->
+    <section class="promotions section section--alt" id="promotions" aria-labelledby="promotions-title">
+      <div class="container">
+        <div class="section__header" data-aos="fade-up">
+          <span class="section__label">Акции</span>
+          <h2 class="section__title" id="promotions-title">Специальные предложения</h2>
+          <p class="section__desc">
+            Приятные бонусы для наших гостей — каждый день.
+          </p>
+        </div>
+ 
+        <div class="promotions__grid">
+ 
+          <article class="promo-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="promo-card__icon">
+              <img src="icons/coffee.svg" alt="" width="48" height="48">
+            </div>
+            <h3 class="promo-card__title">Бизнес-ланч</h3>
+            <p class="promo-card__text">
+             В будние дни с 12:00 до 16:00 у нас действует бизнес-ланч.
+            </p>
+            <span class="promo-card__badge">Пн–Пт, 12:00 – 16:00</span>
+          </article>
+ 
+          <article class="promo-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="promo-card__icon">
+              <img src="icons/pastry.svg" alt="" width="48" height="48">
+            </div>
+            <h3 class="promo-card__title">Скидка на день рождения</h3>
+            <p class="promo-card__text">
+              Дарим скидку 15%(пожалуйста, возьмите с собой паспорт).
+            </p>
+            <span class="promo-card__badge">-15%</span>
+          </article>
+ 
+          <article class="promo-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="promo-card__icon">
+              <img src="icons/lunch.svg" alt="" width="48" height="48">
+            </div>
+            <h3 class="promo-card__title">Открытие новых точек</h3>
+            <p class="promo-card__text">
+              На открытие новых точек сети — скидка 20%
+            </p>
+            <span class="promo-card__badge">-20%</span>
+          </article>
+ 
+        </div>
+      </div>
+    </section>
+
+
     <!-- ==================== МЕНЮ ==================== -->
     <!-- Одно меню для всех точек сети. Страницы задаются в конце файла locations.js (window.HANOI_MENU) -->
-    <section class="menu section section--alt" id="menu" aria-labelledby="menu-title">
+    <section class="menu section" id="menu" aria-labelledby="menu-title">
       <div class="container">
         <div class="section__header" data-aos="fade-up">
           <span class="section__label">Меню</span>
@@ -152,7 +204,7 @@
 
     <!-- ==================== РЕСТОРАНЫ ==================== -->
     <!-- Вкладки и панели строятся скриптом из locations.js -->
-    <section class="locations section" id="locations" aria-labelledby="locations-title">
+    <section class="locations section section--alt" id="locations" aria-labelledby="locations-title">
       <div class="container">
         <div class="section__header" data-aos="fade-up">
           <span class="section__label">Рестораны</span>
@@ -196,16 +248,11 @@
               <img src="icons/telegram.svg" alt="" width="24" height="24">
             </a>
           </li>
-          <li>
-            <a href="#" class="footer__social-link" aria-label="VK">
-              <img src="icons/vk.svg" alt="" width="24" height="24">
-            </a>
-          </li>
         </ul>
       </div>
     </div>
 
-    <div class="footer__bottom">
+    <div class="footer__bottom"> 
       <div class="container">
         <p class="footer__copyright">&copy; 2026 Ханой фуд. Все права защищены.</p>
       </div>
@@ -239,6 +286,7 @@
 
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
   <!-- Данные ресторанов (подключается ДО script.js) -->
   <script src="locations.js"></script>
   <!-- Основной скрипт -->

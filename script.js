@@ -455,6 +455,24 @@
     );
   }
 
+  const TELEGRAM_URL = window.HANOI_TELEGRAM_URL || '';
+
+/**
+ * Небольшой QR-код на Telegram-канал, встаёт рядом со строкой телефона.
+ * Сам рисунок рисует библиотека QRCode — см. initQrCodes() ниже,
+ * здесь только разметка с пустым <canvas>.
+ */
+function renderPhoneQr() {
+  if (!TELEGRAM_URL) return '';
+  return (
+    '<div class="loc-info__qr">' +
+      '<canvas class="loc-qr__canvas" data-qr-url="' + esc(TELEGRAM_URL) + '"' +
+      ' width="64" height="64" aria-label="QR-код на Telegram-канал Ханой Фуд"></canvas>' +
+      '<span class="loc-info__qr-label">Telegram</span>' +
+    '</div>'
+  );
+}
+
   function renderPanel(loc) {
     const id = esc(loc.id);
 
@@ -495,8 +513,11 @@
                 '<span class="loc-info__value">' + esc(loc.metro) + '</span></li>' : '') +
               '<li class="loc-info__item"><span class="loc-info__label">Адрес</span>' +
                 '<address class="loc-info__value">' + esc(loc.address) + '</address></li>' +
-              '<li class="loc-info__item"><span class="loc-info__label">Телефон</span>' +
-                '<a class="loc-info__value loc-info__link" href="' + esc(telHref(loc.phone)) + '">' + esc(loc.phone) + '</a></li>' +
+              '<li class="loc-info__item loc-info__item--phone">' +
+                '<div><span class="loc-info__label">Телефон</span>' +
+                '<a class="loc-info__value loc-info__link" href="' + esc(telHref(loc.phone)) + '">' + esc(loc.phone) + '</a></div>' +
+                renderPhoneQr() +
+              '</li>' +
               '<li class="loc-info__item"><span class="loc-info__label">Email</span>' +
                 '<a class="loc-info__value loc-info__link" href="mailto:' + esc(loc.email) + '">' + esc(loc.email) + '</a></li>' +
               '<li class="loc-info__item"><span class="loc-info__label">Часы работы</span>' +
@@ -567,6 +588,18 @@
       } catch (err) { /* например, при открытии файла с диска */ }
     }
   }
+  /** После вставки разметки в DOM отрисовывает все канвасы с data-qr-url */
+  function initQrCodes(root) {
+    if (!window.QRCode) return;
+    root.querySelectorAll('[data-qr-url]').forEach(function (canvas) {
+      QRCode.toCanvas(
+        canvas,
+        canvas.dataset.qrUrl,
+        { width: 104, margin: 1, color: { dark: '#0B1E0F', light: '#FFFFFF' } },
+        function (err) { if (err) console.error('QR-код: не удалось отрисовать', err); }
+      );
+    });
+  }
 
   function initLocations() {
     if (!LOCATIONS.length) return;
@@ -574,6 +607,9 @@
     heroList.innerHTML = LOCATIONS.map(renderHeroButton).join('');
     tabsEl.innerHTML = LOCATIONS.map(renderTab).join('');
     panelsEl.innerHTML = LOCATIONS.map(renderPanel).join('');
+
+    // QR-коды на Telegram-канал (по одному на точку)
+    initQrCodes(panelsEl);
 
     tabs = Array.from(tabsEl.querySelectorAll('.loc-tab'));
     panels = Array.from(panelsEl.querySelectorAll('.loc-panel'));
@@ -644,3 +680,5 @@
   initLocations();
 
 })();
+
+

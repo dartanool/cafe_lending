@@ -1,43 +1,15 @@
 /**
  * Ханой Фуд — данные о ресторанах.
  *
- * Это ЕДИНСТВЕННЫЙ файл, который нужно править, чтобы:
- *   • изменить адрес / телефон / часы работы / акции / фотографии любой точки;
+ * Это  файл, который нужно править, чтобы:
+ *   • изменить адрес / телефон / часы работы / фотографии любой точки;
  *   • добавить новую точку (скопируйте один блок { ... } и поменяйте данные);
  *   • убрать точку (удалите её блок).
  *
  * Общее меню сети (window.HANOI_MENU) находится в конце этого файла.
  */
-/**
- * Акции. Сейчас у всех точек один и тот же набор (COMMON_PROMOS).
- * Чтобы у ресторана были свои акции, замените в его блоке
- *   promos: COMMON_PROMOS
- * на свой список [ { icon, title, text, badge }, ... ].
- * Если акций нет — удалите строку promos, блок «Акции» не появится.
- *
- * icon  — картинка из папки icons/ (coffee.svg, pastry.svg, lunch.svg)
- * badge — короткая плашка внизу карточки
- */
-const COMMON_PROMOS = [
-  {
-    icon: 'icons/lunch.svg',
-    title: 'Бизнес-ланч',
-    text: 'В будние дни с 12:00 до 16:00 у нас действует бизнес-ланч.',
-    badge: 'Пн–Пт, 12:00 – 16:00',
-  },
-  {
-    icon: 'icons/pastry.svg',
-    title: 'Скидка на день рождения',
-    text: 'Дарим скидку 15%(пожалуйста, возьмите с собой паспорт).',
-    badge: '-15%',
-  },
-  {
-    icon: 'icons/map-pin.svg',
-    title: 'Открытие новых точек',
-    text: 'На открытие новых точек сети — скидка 20%.',
-    badge: '-20%',
-  },
-];
+
+window.HANOI_TELEGRAM_URL = 'https://t.me/hanoi_foodmsk';
 
 window.HANOI_LOCATIONS = [
   {
@@ -58,17 +30,13 @@ window.HANOI_LOCATIONS = [
       ['Ежедневно', '10:00 – 22:00'],
     ],
 
-    promos: COMMON_PROMOS,
-
     // Фотографии ресторана (карусель). Сейчас стоят заглушки — замените на свои,
     // например: 'images/belorusskaya/1.jpg'. Фото может быть сколько угодно.
     photos: [
-      'https://picsum.photos/seed/belorusskaya-1/1200/900',
-      'https://picsum.photos/seed/belorusskaya-2/1200/900',
-      'https://picsum.photos/seed/belorusskaya-3/1200/900',
-      'https://picsum.photos/seed/belorusskaya-4/1200/900',
-      'https://picsum.photos/seed/belorusskaya-5/1200/900',
-      'https://picsum.photos/seed/belorusskaya-6/1200/900',
+      'assets/images/b/b-1.jpeg',
+      'assets/images/b/b-2.jpeg',
+      'assets/images/b/b-3.jpeg',
+      'assets/images/b/b-4.jpeg',
     ],
 
     // Яндекс.Карта. Чтобы на карте был виден именно ресторан (с названием и карточкой),
@@ -95,17 +63,14 @@ window.HANOI_LOCATIONS = [
       ['Ежедневно', '10:00 – 22:00'],
     ],
 
-    promos: COMMON_PROMOS,
 
     // Фотографии ресторана (карусель). Сейчас стоят заглушки — замените на свои,
     // например: 'images/belorusskaya/1.jpg'. Фото может быть сколько угодно.
     photos: [
-      'https://picsum.photos/seed/avtozavodskaya-1/1200/900',
-      'https://picsum.photos/seed/avtozavodskaya-2/1200/900',
-      'https://picsum.photos/seed/avtozavodskaya-3/1200/900',
-      'https://picsum.photos/seed/avtozavodskaya-4/1200/900',
-      'https://picsum.photos/seed/avtozavodskaya-5/1200/900',
-      'https://picsum.photos/seed/avtozavodskaya-6/1200/900',
+      'assets/images/a/a-1.jpeg',
+      'assets/images/a/a-2.jpeg',
+      'assets/images/a/a-3.jpeg',
+      'assets/images/a/a-4.jpeg',
     ],
 
     map: {
@@ -127,17 +92,13 @@ window.HANOI_LOCATIONS = [
       ['Ежедневно', '10:00 – 22:00'],
     ],
 
-    promos: COMMON_PROMOS,
-
     // Фотографии ресторана (карусель). Сейчас стоят заглушки — замените на свои,
     // например: 'images/belorusskaya/1.jpg'. Фото может быть сколько угодно.
     photos: [
-      'https://picsum.photos/seed/marksistskaya-1/1200/900',
-      'https://picsum.photos/seed/marksistskaya-2/1200/900',
-      'https://picsum.photos/seed/marksistskaya-3/1200/900',
-      'https://picsum.photos/seed/marksistskaya-4/1200/900',
-      'https://picsum.photos/seed/marksistskaya-5/1200/900',
-      'https://picsum.photos/seed/marksistskaya-6/1200/900',
+      'assets/images/m/m-1.jpeg',
+      'assets/images/m/m-2.jpeg',
+      'assets/images/m/m-3.jpeg',
+      'assets/images/m/m-4.jpeg',
     ],
 
     map: {
@@ -157,9 +118,33 @@ window.HANOI_LOCATIONS = [
  */
 window.HANOI_MENU = {
   pages: [
-    'https://picsum.photos/seed/hanoi-menu-1/1200/1700',
-    'https://picsum.photos/seed/hanoi-menu-2/1200/1700',
-    'https://picsum.photos/seed/hanoi-menu-3/1200/1700',
-    'https://picsum.photos/seed/hanoi-menu-4/1200/1700',
+    'assets/menu/business-lunch.jpeg',
+    'assets/menu/menu-1.jpeg',
+    'assets/menu/menu-2.jpeg',
+    'assets/menu/menu-3.jpeg',
+    'assets/menu/menu-4.jpeg',
+    'assets/menu/menu-5.jpeg',
   ],
 };
+
+
+// window.COMMON_PROMOS = [
+//   {
+//     icon: 'icons/lunch.svg',
+//     title: 'Бизнес-ланч',
+//     text: 'В будние дни с 12:00 до 16:00 у нас действует бизнес-ланч.',
+//     badge: 'Пн–Пт, 12:00 – 16:00',
+//   },
+//   {
+//     icon: 'icons/pastry.svg',
+//     title: 'Скидка на день рождения',
+//     text: 'Дарим скидку 15%(пожалуйста, возьмите с собой паспорт).',
+//     badge: '-15%',
+//   },
+//   {
+//     icon: 'icons/map-pin.svg',
+//     title: 'Открытие новых точек',
+//     text: 'На открытие новых точек сети — скидка 20%.',
+//     badge: '-20%',
+//   },
+// ];

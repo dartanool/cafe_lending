@@ -732,6 +732,46 @@ button {
   gap: 4px;
 }
 
+/* Строка «Телефон»: текст слева, QR-код на Telegram-канал — справа, на одном уровне */
+.loc-info__item--phone {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+
+.loc-info__item--phone > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ 
+.loc-info__qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+ 
+.loc-qr__canvas {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background: var(--color-white);
+  box-shadow: var(--shadow);
+}
+ 
+.loc-info__qr-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-olive);
+}
+
 .loc-info__label {
   font-size: 0.8125rem;
   font-weight: 600;
