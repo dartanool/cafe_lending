@@ -51,6 +51,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
+    overflow-x: hidden;
 }
 
 body {
@@ -59,7 +60,6 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background: var(--color-bg);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -380,7 +380,8 @@ button {
   display: flex;
   align-items: center;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
+  padding-top: var(--header-height);
   background: url("assets/images/hero-laptop.jpg") center / cover no-repeat;
 }
 @media (max-width: 768px) {
@@ -599,7 +600,7 @@ button {
 .about__video {
   display: block;
   width: 100%;
-  height: 50%;
+  height: 100%;
   object-fit: cover;
   border-radius: inherit;
 }
@@ -612,15 +613,14 @@ button {
   border-radius: var(--radius);
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
   .about__video {
-    display: none;
+    display: none;          // ← видео скрывается 
   }
-
   .about__mobile-image {
-    display: block;
+    display: block;         //← вместо него показывается статичная картинка
   }
-}
+} */
 
 
 .about__image-wrapper:hover .about__image {
@@ -1241,7 +1241,7 @@ button {
   .hero__inner {
     grid-template-columns: 1fr;
     text-align: center;
-    padding-top: 110px;
+    padding-top: 24px;
     padding-bottom: 64px;
   }
 
