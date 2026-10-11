@@ -71,6 +71,11 @@ window.HANOI_LOCATIONS = [
       'assets/images/a/a-2.jpeg',
       'assets/images/a/a-3.jpeg',
       'assets/images/a/a-4.jpeg',
+      'assets/images/a/a-5.jpeg',
+      'assets/images/a/a-6.jpeg',
+      'assets/images/a/a-7.jpeg',
+      'assets/images/a/a-8.jpeg',
+      'assets/images/a/a-9.jpeg',
     ],
 
     map: {
@@ -99,6 +104,8 @@ window.HANOI_LOCATIONS = [
       'assets/images/m/m-2.jpeg',
       'assets/images/m/m-3.jpeg',
       'assets/images/m/m-4.jpeg',
+      'assets/images/m/m-5.jpeg',
+      'assets/images/m/m-6.jpeg',
     ],
 
     map: {
