@@ -1,191 +1,223 @@
-# Verde Café — Landing Page
+# Ханой фуд — Landing Page
 
-Статический одностраничный сайт для кафе. Создан на чистом HTML5, CSS3 и Vanilla JavaScript без сборщиков и фреймворков.
+Статический одностраничный сайт сети вьетнамских ресторанов. HTML5, CSS3 и Vanilla JavaScript без сборщиков и фреймворков.
 
 ## Структура проекта
 
 ```
 /
-├── index.html          # Главная страница (вся разметка)
-├── style.css           # Стили, адаптивность, анимации hover
-├── script.js           # Навигация, скролл, AOS, мобильное меню
-├── README.md           # Документация
+├── index.html          # Разметка страницы (hero, о нас, акции, меню, рестораны, footer, lightbox)
+├── style.css           # Стили, адаптивность, карусели, вкладки ресторанов
+├── script.js           # Навигация, меню, рестораны, карты, QR-коды, lightbox
+├── locations.js        # Данные точек сети и страниц меню (главный файл для контента)
+├── README.md
 │
-├── images/             # Локальные изображения (замените заглушки)
-├── icons/              # SVG-иконки (логотип, соцсети, акции)
-└── assets/             # Favicon и прочие ресурсы
+├── assets/
+│   ├── favicon.svg
+│   ├── images/         # Hero, постер и фото «О нас», фото ресторанов (b/, a/, m/…)
+│   ├── menu/           # Страницы меню (JPEG/WebP)
+│   └── video/          # Видео для блока «О нас» (например restaurant.mp4)
+│
+└── icons/              # SVG: логотип, иконки акций, соцсети
 ```
 
-## Как открыть сайт локально
+## Разделы сайта
 
-1. Скачайте или склонируйте проект.
-2. Откройте файл `index.html` двойным кликом в браузере.
+| Блок | ID | Где править |
+|------|-----|-------------|
+| Главный экран | `#hero` | `index.html` (тексты), `style.css` (фон), кнопки ресторанов — из `locations.js` |
+| О нас | `#about` | `index.html`, медиа в `assets/images/`, `assets/video/` |
+| Акции (общие) | `#promotions` | `index.html` |
+| Меню (картинки страниц) | `#menu` | `locations.js` → `window.HANOI_MENU` |
+| Рестораны | `#locations` | `locations.js` → `window.HANOI_LOCATIONS` |
 
-Или запустите локальный сервер (рекомендуется для корректной загрузки внешних изображений):
+Навигация в шапке: **Главная**, **О нас**, **Акции**, **Меню**, **Рестораны**.
 
-```bash
-# Python 3
-python3 -m http.server 8080
+На каждую точку можно дать прямую ссылку: `https://ваш-сайт.ru/#loc-belorusskaya` (id задаётся в `locations.js`).
 
-# Node.js (если установлен npx)
-npx serve .
+---
+
+## Как изменить рестораны и контакты
+
+Основной файл: **`locations.js`**.
+
+### Добавить или изменить точку
+
+В массиве `window.HANOI_LOCATIONS` каждый ресторан — объект с полями:
+
+| Поле | Назначение |
+|------|------------|
+| `id` | Латиница без пробелов, для ссылки `#loc-{id}` |
+| `short` | Короткое имя (вкладка, кнопка на hero) |
+| `name`, `description` | Заголовок и текст панели |
+| `metro`, `address`, `phone`, `email` | Контакты |
+| `hours` | Массив пар `[['Подпись', '10:00 – 22:00'], …]` |
+| `photos` | Пути к фото карусели, например `'assets/images/b/b-1.jpeg'` |
+| `map` | Карта Яндекса (см. ниже) |
+
+**Новая точка:** скопируйте блок `{ … }`, измените `id` и данные, добавьте фото в `assets/images/`.
+
+**Удалить точку:** удалите соответствующий объект из массива.
+
+### Карта (Яндекс)
+
+В объекте `map`:
+
+- **`query`** — поиск по тексту («название + адрес»), если нет `orgId`.
+- **`orgId`** — номер организации на [Яндекс.Картах](https://yandex.ru/maps) (из URL: `…/org/…/198904300384/` → `198904300384`).
+- **`lat`**, **`lng`** — координаты (опционально, для маршрута и уточнения карты).
+- **`embedUrl`** — свой URL iframe, если нужен полный контроль.
+
+Кнопка «Построить маршрут» формируется в `script.js` из тех же данных.
+
+### Telegram и QR-код
+
+В начале `locations.js`:
+
+```javascript
+window.HANOI_TELEGRAM_URL = 'https://t.me/hanoi_foodmsk';
 ```
 
-Затем откройте в браузере: `http://localhost:8080`
+Рядом с телефоном в карточке ресторана показывается QR-код на этот URL (библиотека QRCode с CDN).
 
-## Как заменить изображения
-
-### Hero (фон главного экрана)
-
-В файле `style.css` найдите блок `.hero` и замените URL:
-
-```css
-background: url('images/hero.jpg') center / cover no-repeat;
-```
-
-Положите файл `hero.jpg` в папку `images/`.
-
-### Блок «О кафе»
-
-В `index.html` найдите секцию `#about` и измените атрибут `src` у тега `<img>`:
-
-```html
-<img src="images/about.jpg" alt="Интерьер кафе" ...>
-```
-
-### Галерея
-
-В секции `#gallery` замените URL у каждого `<img>`:
-
-```html
-<img src="images/gallery-1.jpg" alt="..." ...>
-```
-
-Рекомендуемый размер: 600×600 px или больше (квадрат).
-
-### Open Graph (превью в соцсетях)
-
-В `<head>` файла `index.html` измените:
-
-```html
-<meta property="og:image" content="images/og-preview.jpg">
-```
+---
 
 ## Как изменить меню
 
-Откройте `index.html`, найдите секцию `#menu`. Каждая категория — это `<article class="menu-card">`.
+В **`locations.js`**, объект **`window.HANOI_MENU`**:
 
-Чтобы добавить позицию, скопируйте элемент списка:
-
-```html
-<li class="menu-card__item">
-  <span class="menu-card__name">Название блюда</span>
-  <span class="menu-card__price">300 ₽</span>
-</li>
+```javascript
+window.HANOI_MENU = {
+  pages: [
+    'assets/menu/business-lunch.jpeg',
+    'assets/menu/menu-1.jpeg',
+    // … добавляйте страницы по порядку
+  ],
+};
 ```
 
-Чтобы добавить новую категорию, скопируйте целиком блок `<article class="menu-card">...</article>`.
+- Положите файлы в **`assets/menu/`**.
+- Рекомендуемая ширина страниц: от **1600 px**, формат JPG или WebP.
+- На сайте: горизонтальная карусель; по клику — полноэкранный просмотр (lightbox) с листанием и увеличением.
 
-## Как изменить контакты
+Разметка меню в `index.html` только контейнер `#menu-standalone` — содержимое строит `script.js`.
 
-В секции `#contacts` в `index.html` обновите:
-
-| Поле | Где искать |
-|------|------------|
-| Адрес | `<address class="contacts__value">` |
-| Телефон | `href="tel:..."` и текст ссылки |
-| Email | `href="mailto:..."` и текст ссылки |
-| Часы работы | `<span class="contacts__value">` в последнем пункте списка |
-
-Кнопки «Позвонить» и «Написать» также используют `tel:` и `mailto:` — обновите их ссылки.
-
-### Встроенная карта
-
-Замените блок `.contacts__map-placeholder` на iframe с Яндекс.Картами или Google Maps:
-
-```html
-<div class="contacts__map">
-  <iframe
-    src="https://yandex.ru/map-widget/v1/..."
-    width="100%"
-    height="360"
-    style="border:0;"
-    allowfullscreen
-    loading="lazy">
-  </iframe>
-</div>
-```
+---
 
 ## Как изменить акции
 
-Секция `#promotions` в `index.html`. Каждая акция — `<article class="promo-card">`.
+**Общие акции** для всей сети — секция `#promotions` в **`index.html`** (карточки `.promo-card`).
 
-Измените заголовок (`.promo-card__title`), описание (`.promo-card__text`) и бейдж (`.promo-card__badge`).
+**Акции одной точки** — массив `promos` внутри объекта ресторана в **`locations.js`** (поля `icon`, `title`, `text`, `badge`). В `locations.js` есть закомментированный пример `window.COMMON_PROMOS` для справки.
+
+---
+
+## Как заменить изображения и видео
+
+### Hero (фон первого экрана)
+
+В **`style.css`**, блок `.hero`:
+
+```css
+background: url("assets/images/hero-laptop.jpg") center / cover no-repeat;
+```
+
+На узких экранах используется `hero-mobile.jpg` (медиазапрос в том же файле).
+
+### Блок «О нас»
+
+В **`index.html`**:
+
+- Видео: `assets/video/restaurant.mp4`, постер `assets/images/about-poster.jpg`.
+- На мобильных показывается статичное изображение `.about__mobile-image` (тот же постер).
+
+### Фото ресторанов
+
+Пути в **`locations.js`** → `photos` каждой точки. Храните файлы, например:
+
+- `assets/images/b/` — Белорусская  
+- `assets/images/a/` — Автозаводская  
+- `assets/images/m/` — Марксистская  
+
+### Open Graph
+
+В `<head>` **`index.html`**:
+
+```html
+<meta property="og:image" content="https://ваш-домен.ru/assets/images/og-preview.jpg">
+```
+
+---
+
+## Как изменить тексты и SEO
+
+Файл **`index.html`**:
+
+- `<title>`, `description`, `keywords`, Open Graph (`og:title`, `og:description`, `og:url`).
+- Тексты hero, блока «О нас», акций, footer.
+- Ссылки соцсетей в footer (сейчас Instagram и Telegram).
+
+Название бренда: **«Ханой фуд»** / **«Ханой Фуд»** — в шапке, hero, footer, copyright.
+
+---
 
 ## Как заменить цвета
 
-Все цвета заданы через CSS-переменные в начале файла `style.css`:
+В начале **`style.css`**, блок `:root`:
 
 ```css
 :root {
-  --color-primary: #24452F;       /* основной тёмно-зелёный */
-  --color-primary-light: #2E6B4A; /* светлее зелёный */
-  --color-accent: #3A8A5C;        /* акцентный зелёный */
-  --color-beige: #E8DCC8;         /* бежевый / песочный */
-  --color-white: #FFFFFF;
-  --color-text: #2D2D2D;
-  --color-text-light: #5A5A5A;
-  --color-bg: #F7F4EE;            /* светлый фон */
+  --color-primary: #0B1E0F;
+  --color-primary-light: #1C3019;
+  --color-accent: #BD8443;
+  --color-accent-dark: #A66F35;
+  --color-olive: #77693B;
+  --color-beige: #F2EEE1;
+  --color-text: #0B1E0F;
+  --color-text-light: #77693B;
+  --color-bg: #F2EEE1;
   --color-bg-alt: #FFFFFF;
+  /* … */
 }
 ```
 
-Измените значения — цвета обновятся по всему сайту.
+Шрифты: **Playfair Display** (заголовки), **Inter** (текст) — подключены в `index.html` через Google Fonts.
 
-## Как изменить название кафе
-
-Замените «Verde Café» в следующих местах файла `index.html`:
-
-- `<title>` и meta-теги в `<head>`
-- Логотип в шапке и футере (`.header__logo-text`, `.footer__logo`)
-- Заголовок Hero (`.hero__title`)
-- Копирайт в футере
+---
 
 ## Как загрузить сайт на хостинг через FTP
 
-1. Подключитесь к хостингу через FTP-клиент (FileZilla, Cyberduck и т.п.).
-2. Введите данные от хостинг-провайдера: хост, логин, пароль, порт (обычно 21).
-3. Перейдите в корневую папку сайта (`public_html`, `www` или `htdocs`).
-4. Загрузите **все файлы и папки** проекта:
-   - `index.html`
-   - `style.css`
-   - `script.js`
-   - папки `images/`, `icons/`, `assets/`
-5. Убедитесь, что `index.html` лежит в корне — он станет главной страницей.
-6. Откройте ваш домен в браузере и проверьте работу сайта.
+1. Подключитесь к хостингу (FileZilla, Cyberduck и т.п.): хост, логин, пароль, порт **21** (или SFTP по инструкции провайдера).
+2. Откройте корень сайта: `public_html`, `www` или `htdocs`.
+3. Загрузите **все** файлы и папки:
+   - `index.html`, `style.css`, `script.js`, `locations.js`
+   - `assets/` (включая `images/`, `menu/`, `video/`)
+   - `icons/`
+4. Убедитесь, что `index.html` в корне домена.
+5. Проверьте меню, переключение ресторанов, карты и мобильную версию.
 
-> **Совет:** если заменили picsum-заглушки на локальные фото, загрузите их в `images/` до публикации.
+---
 
 ## Какие файлы редактировать
 
 | Задача | Файл |
 |--------|------|
-| Тексты, меню, контакты, SEO | `index.html` |
-| Цвета, шрифты, отступы, адаптив | `style.css` |
-| Скролл, меню, анимации | `script.js` |
-| Логотип, иконки | `icons/` |
-| Фотографии | `images/` |
+| Рестораны, телефоны, часы, фото точек, страницы меню, Telegram URL | `locations.js` |
+| Тексты hero, «О нас», общие акции, SEO, соцсети | `index.html` |
+| Цвета, фоны hero, вёрстка, адаптив | `style.css` |
+| Поведение (скролл, вкладки, карусели, lightbox, карты, QR) | `script.js` |
+| Логотип и иконки | `icons/` |
+| Фото, видео, сканы меню | `assets/` |
 | Favicon | `assets/favicon.svg` |
+
+---
 
 ## Используемые технологии
 
-- **HTML5** — семантическая разметка
-- **CSS3** — Flexbox, Grid, CSS Variables, адаптивность
-- **JavaScript ES6** — без фреймворков
+- **HTML5** — семантическая разметка, `<dialog>` для просмотра меню
+- **CSS3** — Flexbox, Grid, CSS Variables, адаптив (desktop / tablet / mobile)
+- **JavaScript (ES6)** — без React/Vue и сборщиков
 - **Google Fonts** — Playfair Display, Inter
-- **AOS** — анимации при прокрутке (CDN)
-- **picsum.photos** — изображения-заглушки (замените на свои)
-
-## Лицензия
-
-Проект создан как шаблон. Свободно используйте и адаптируйте под своё кафе.
+- **AOS 2.3.4** (CDN) — анимации при прокрутке
+- **qrcode 1.5.1** (jsDelivr) — QR-коды на Telegram
+- **Яндекс.Карты** — embed iframe без API-ключа
